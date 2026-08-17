@@ -2,6 +2,7 @@
 title: Add Login to Your ASP.NET OWIN Application
 description: This guide demonstrates how to integrate Auth0 with any new or existing ASP.NET OWIN application using the Microsoft.Owin.Security.OpenIdConnect NuGet package.
 sidebarTitle: ASP.NET OWIN
+validatedOn: 2026-08-17
 ---
 
 import {HowToSchema} from "/snippets/HowToSchema.jsx";
@@ -230,9 +231,11 @@ public partial class Startup
 Create `Controllers/AccountController.cs` with three actions: `Login`, `Logout`, and `UserProfile`.
 
 ```csharp Controllers/AccountController.cs
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Auth0.AspNetCore.Authentication;
+using System.Security.Claims;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 
 public class AccountController : Controller
 {
